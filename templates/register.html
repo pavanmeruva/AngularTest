@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div class ="container">
+        <div class = "row">
+            <div class = "col-xs-6">
+                <h3 class ="alert-info">REGISTRATION</h3>
+
+                <!-- Register Form Entries -->
+                <form name="registrationForm" novalidate>
+                    <div class = "form-group" ng-class="{ 'has-error':registrationForm.name.$invalid && !registrationForm.name.$pristine }">
+                        <label>Name</label>
+                        <input type = "text" class="form-control" name="name" ng-model="user.name" required ng-minlength="1">
+                        <p ng-show="registrationForm.name.$error.minlength" class="help-block">Name cannot be empty.</p>
+                    </div>
+                    <div class = "form-group" ng-class="{ 'has-error':registrationForm.username.$invalid && !registrationForm.username.$pristine }">
+                        <label>UserName</label>
+                        <input type = "text" class="form-control" name="username" ng-model="user.username" required ng-minlength="5" ng-maxlength="10">
+                        <p ng-show="registrationForm.username.$error.minlength || registrationForm.username.$error.maxlength" class="help-block">Username must be 5-10 characters long.</p>
+                    </div>
+                    <div class = "form-group" ng-class="{ 'has-error':registrationForm.email.$invalid && !registrationForm.email.$pristine }">
+                        <label>Email Address</label>
+                        <input type = "email" class="form-control" name="email" ng-model="user.email" required>
+                        <p ng-show="registrationForm.email.$dirty && registrationForm.email.$error.required" class="help-block">Email Address cannot be empty</p>
+                    </div>
+                    <div class = "form-group" ng-class="{ 'has-error':registrationForm.password.$invalid && !registrationForm.password.$pristine }">
+                        <label>Password</label>
+                        <input type = "password" class="form-control" name="password" ng-model="user.password" required ng-minlength="5" ng-maxlength="20">
+                        <p ng-show="registrationForm.password.$error.minlength || registrationForm.password.$error.maxlength" class="help-block">Password must be 5-20 characters long.</p>
+                    </div>
+                    <div class = "form-group" ng-class="{ 'has-error':registrationForm.reenterPassword.$invalid && !registrationForm.reenterPassword.$pristine }">
+                        <label>Confirm Password</label>
+                        <input type = "password" class="form-control" name="reenterPassword" ng-model="user.reenterPassword" required>
+                    </div>
+
+                    <div class = "form-group">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#mymodal" ng-disabled="registrationForm.$invalid || user.password != user.reenterPassword" ng-click="submitForm(user.username)">Register</button>
+                        <button type="reset" class="btn btn-warning" ng-click="reset()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTRATION SUCCESSFUL MODAL DIALOG -->
+    <div class="modal fade" id = "mymodal">
+        <div class = "modal-dialog">
+            <div class = "modal-content">
+                <!-- <div class = "modal-header">
+                    <h3>Greeting</h3>
+                </div> -->
+                <div class = "modal-body">
+                    <p>Registration of User '{{ uName }}' is successful</p>
+                </div>
+                <div class = "modal-footer">
+                    <button class="btn btn-info" class="btn btn-info" data-dismiss="modal" ng-click="modelOK()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

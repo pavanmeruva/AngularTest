@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div class ="container">
+        <div class = "row">
+            <div class = "col-xs-6">
+                <h3 class ="alert-info">LOGIN</h3>
+                <form name="loginForm" novalidate>
+                    <div class = "form-group" ng-class="{ 'has-error':loginForm.username.$invalid && !loginForm.username.$pristine }">
+                        <label>UserName</label>
+                        <input type = "text" class="form-control" name="username" ng-model="user.username" required ng-minlength="5" ng-maxlength="10">
+                        <p ng-show="loginForm.username.$error.minlength || loginForm.username.$error.maxlength" class="help-block">Username must be 5-10 characters long.</p>
+                    </div>
+
+                    <div class = "form-group" ng-class="{ 'has-error':loginForm.password.$invalid && !loginForm.password.$pristine }">
+                        <label>Password</label>
+                        <input type = "password" class="form-control" name="password" ng-model="user.password" required ng-minlength="5" ng-maxlength="20">
+                        <p ng-show="loginForm.password.$error.minlength || loginForm.password.$error.maxlength" class="help-block">Password must be 5-20 characters long.</p>
+                    </div>
+
+                    <div class = "form-group">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#mymodal" ng-disabled="loginForm.$invalid" ng-click="submitForm(user.username)">Login</button>
+                        <button type="reset" class="btn btn-warning" ng-click="reset()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIN SUCCESSFUL MODAL DIALOG -->
+    <div class="modal fade" id = "mymodal">
+        <div class = "modal-dialog">
+            <div class = "modal-content">
+                <!-- <div class = "modal-header">
+                    <h3>Greeting</h3>
+                </div> -->
+                <div class = "modal-body">
+                    <p>User '{{ uName }}' logged in successfully</p>
+                </div>
+                <div class = "modal-footer">
+                    <button class="btn btn-info" class="btn btn-info" data-dismiss="modal" ng-click="modelOK()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

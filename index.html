@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login/Registration</title>
+    <link rel="stylesheet" href="3rdparty/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="3rdparty/bootstrap/css/bootstrap-theme.min.css">
+</head>
+<body ng-app="loginRegisterApp">
+<div class="container">
+    <div class="row">
+        <ul class = "nav nav-pills navbar">
+            <li><a href = "#login"><span class="glyphicon glyphicon-home"></span>Login</a></li>
+            <li><a href = "#register"><span class="glyphicon glyphicon-book"></span>Register</a></li>
+            <li><a href = "#httpservice"><span class="glyphicon glyphicon-book"></span>HttpService</a></li>
+        </ul>
+
+        <div class="col-md-9">
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+
+<script src="3rdparty/angular/angular.min.js"></script>
+<script src="3rdparty/angular-route/angular-route.min.js"></script>
+<script src="3rdparty/jquery/jquery-1.11.3.min.js"></script>
+<script src="3rdparty/bootstrap/js/bootstrap.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
